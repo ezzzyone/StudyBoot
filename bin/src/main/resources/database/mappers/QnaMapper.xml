@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+		    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+		    "http://www.mybatis.org/dtd/mybatis-3-mapper.dtd">
+		    
+		 <mapper namespace="com.iu.home.board.qna.QnaMapper">
+	
+		 <select id="getList" resultType="QnaVO" parameterType="Pager">
+		 SELECT * from QNA 
+		 WHERE CONTENTS LIKE CONCAT('%',#{search},'%')
+		 ORDER BY NUM DESC
+		 LIMIT #{startRow}, #{perPage}
+		 </select>
+		 
+		 <insert id="setList" parameterType="QnaVO" useGeneratedKeys="true" keyProperty="num">
+		 INSERT INTO QNA VALUES(#{num},#{writer},#{title},#{contents},1,now(),1,1,1)
+		 </insert>
+		 
+		 <select id="getListCount" resultType="Long" parameterType="Pager">
+		 SELECT COUNT(NUM) from QNA
+		 WHERE CONTENTS LIKE CONCAT('%',#{search},'%')
+		 ORDER BY NUM DESC 
+		</select>
+		
+		 <insert id="setFileAdd" parameterType="QnaFileVO">
+		 INSERT INTO QNAFILE VALUES(null,#{num},#{fileName},#{oriName})
+		 </insert>
+		 
+		  <select id="getDetail" parameterType="QnaVO" resultMap="detail">
+		  SELECT Q.*,QF.*
+ 			FROM QNA Q
+ 			LEFT JOIN
+ 			QNAFILE QF
+ 			ON Q.NUM = QF.NUM
+ 			WHERE Q.NUM=#{num}
+		</select>
+		 
+	  <resultMap type="QnaVO" id="detail">
+      <id column="NUM" property="num"/>
+      <result column="WRITER" property="writer"/>
+       <result column="TITLE" property="title"/>
+      <result column="CONTENTS" property="contents"/>
+      <result column="HIT" property="hit"/>
+      <result column="REF" property="ref"/>
+      <result column="STEP" property="step"/>
+      <result column="DEPTH" property="depth"/>
+                              
+      <association property="qnaFileVO" javaType="QnaFileVO">
+      <result column="FILENUM" property="fileNum"/>
+      <result column="FILENAME" property="fileName"/>
+      <result column="ORINAME" property="oriName"/>
+      </association>
+      </resultMap>
+		
+		
+		 
+		 </mapper>

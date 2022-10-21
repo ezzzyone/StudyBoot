@@ -16,8 +16,11 @@ import com.iu.home.board.qna.QnaMapper;
 import com.iu.home.board.qna.QnaVO;
 import com.iu.home.util.Pager;
 
+import lombok.extern.slf4j.Slf4j;
+
 //controller anotation
 @Controller
+@Slf4j
 public class HomeComtroller {
 	
 //	@Value("${my.message.hi}")
@@ -30,14 +33,19 @@ public class HomeComtroller {
 	@Autowired
 	private QnaMapper qnaMapper;
 	
+	@Value("${my.default}")
+	private String app;
+	
 	@GetMapping("/")
 	public String home()throws Exception{
+		
+		log.info(app);
 		//System.out.println(message);
-		log.error("Error message");
-		log.warn("warn message");
-		log.info("info message");
-		log.debug("debug message");
-		log.trace("trace message");
+//		log.error("Error message");
+//		log.warn("warn message");
+//		log.info("info message");
+//		log.debug("debug message");
+//		log.trace("trace message");
 		
 		//List<QnaVO> ar = qnaMapper.getList();
 		//log.info("List : {} size {}", ar, ar.size());
