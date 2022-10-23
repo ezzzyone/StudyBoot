@@ -33,7 +33,7 @@ public class FileManager extends AbstractView{
 		   
 		log.info("QNAFILEVO {}", qnafilevo);
 		
-		File file = new File("file:///app/upload/"+path, qnafilevo.getFileName());
+		File file = new File("/Users/jw/upload/"+path, qnafilevo.getFileName());
 				
 		//한글 처리
 		 response.setCharacterEncoding("UTF-8");
