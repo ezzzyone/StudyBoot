@@ -29,7 +29,7 @@ public class FileManageController {
 //		if(path.equals("qna")) {
 //			
 //		}else if(path.equals("notice")) 
-			qnaFileVO.setFileName("1df72f43-ecec-4f19-bffd-4267c3679d8c_.jpg");
+			qnaFileVO.setFileName("3847a180-7161-4e2a-967f-8441f22a6e4e_.jpg");
 		    qnaFileVO.setOriName("2.jpg");
 		
 		
