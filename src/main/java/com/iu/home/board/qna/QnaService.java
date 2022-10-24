@@ -24,7 +24,7 @@ public class QnaService {
 	private QnaMapper qnaMapper;
 	
 	
-	@Value("${app.upload.path}")
+	@Value("${app.upload.qna}")
 	private String path;
 	
 	@Autowired
