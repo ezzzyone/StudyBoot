@@ -5,6 +5,8 @@
 <configuration>
 	<typeAliases>
 		<typeAlias type="com.iu.home.board.qna.QnaVO" alias="QnaVO"/>
+		<typeAlias type="com.iu.home.member.MemberVO" alias="MemberVO"/>
+		<typeAlias type="com.iu.home.member.RoleVO" alias="RoleVO"/>
 		<typeAlias type="com.iu.home.util.QnaFileVO" alias="QnaFileVO"/>
 		<typeAlias type="java.lang.String" alias="String"/>
 		<typeAlias type="java.lang.Long" alias="Long"/>

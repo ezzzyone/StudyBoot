@@ -42,7 +42,7 @@
 	  <resultMap type="QnaVO" id="detail">
       <id column="NUM" property="num"/>
       <result column="WRITER" property="writer"/>
-       <result column="TITLE" property="title"/>
+      <result column="TITLE" property="title"/>
       <result column="CONTENTS" property="contents"/>
       <result column="HIT" property="hit"/>
       <result column="REF" property="ref"/>
