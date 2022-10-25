@@ -15,7 +15,7 @@ ${vo.contents}
 <a href="/fileDown?fileNum=2">Down</a>
 
 <img src="/file/qna/${vo.qnaFileVO.fileName}">
-<a href="/fileDown/qna?fileNum=2">QnaDown</a>
+<a href="/fileDown/qna?fileNum=${vo.qnaFileVO.fileName}">QnaDown</a>
 
 
 </body>

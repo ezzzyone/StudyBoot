@@ -10,6 +10,7 @@ import java.util.UUID;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 import org.springframework.util.FileCopyUtils;
 import org.springframework.web.multipart.MultipartFile;
@@ -22,7 +23,10 @@ import lombok.extern.slf4j.Slf4j;
 @Component
 @Slf4j
 public class FileManager extends AbstractView{
+	// 상속 꼭!
 	
+	@Value("${file.download.path}")
+	private String base;
 	   @Override
 	protected void renderMergedOutputModel(Map<String, Object> model, HttpServletRequest request,
 			HttpServletResponse response) throws Exception {
@@ -33,7 +37,7 @@ public class FileManager extends AbstractView{
 		   
 		log.info("QNAFILEVO {}", qnafilevo);
 		
-		File file = new File("/Users/jw/upload/"+path, qnafilevo.getFileName());
+		File file = new File(base+path, qnafilevo.getFileName());
 				
 		//한글 처리
 		 response.setCharacterEncoding("UTF-8");

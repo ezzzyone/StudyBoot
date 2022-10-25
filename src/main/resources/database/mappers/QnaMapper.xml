@@ -26,6 +26,10 @@
 		 INSERT INTO QNAFILE VALUES(null,#{num},#{fileName},#{oriName})
 		 </insert>
 		 
+		 <select id="getFile" parameterType="QnaFileVO" resultType="QnaFileVO">
+		 SELECT * FROM QNAFILE WHERE FILENUM=#{fileNum}
+		 </select>
+		 
 		  <select id="getDetail" parameterType="QnaVO" resultMap="detail">
 		  SELECT Q.*,QF.*
  			FROM QNA Q
