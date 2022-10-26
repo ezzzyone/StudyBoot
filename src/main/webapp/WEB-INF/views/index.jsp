@@ -8,6 +8,7 @@
 <title>Insert title here</title>
 <c:import url="./temp/boot.jsp"></c:import>
 <link href="/css/test.css" rel="stylesheet">
+<script defer src="/js/test.js"></script>
 </head>
 <body>
 <h1>INDEX</h1>
@@ -24,5 +25,8 @@
 <h1><a href="./qna/write">write</a></h1>
 <img src="/img/1.jpg">
 
+<button id="btn1" class="buttons">Test1</button>
+<button id="btn2" class="buttons">Test2</button>
+<button id="btn3" class="buttons">Test3</button>
 </body>
 </html>

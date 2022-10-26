@@ -10,6 +10,7 @@
 		<typeAlias type="com.iu.home.util.QnaFileVO" alias="QnaFileVO"/>
 		<typeAlias type="java.lang.String" alias="String"/>
 		<typeAlias type="java.lang.Long" alias="Long"/>
+		<typeAlias type="java.lang.Integer" alias="Integer"/>
 		<typeAlias type="com.iu.home.util.Pager" alias="Pager"/>
 		</typeAliases>
 </configuration>

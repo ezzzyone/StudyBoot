@@ -8,6 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
@@ -43,7 +44,6 @@ public class MemberController {
 			mv.addObject("url", "member/join");
 			throw new Exception();
 		}
-		
 		mv.setViewName("/alert");
 		
 		return mv;
@@ -93,6 +93,14 @@ public class MemberController {
 		return mv; 
 		
 	}
+
+	@GetMapping("idCheck")
+	@ResponseBody
+	public int idCheck(String id)throws Exception{
+		int result = memberMapper.getIdCheck(id);
+		return result;
+	}
+	
 	
 	
 	

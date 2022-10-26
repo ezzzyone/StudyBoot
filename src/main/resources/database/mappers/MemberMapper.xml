@@ -13,7 +13,11 @@
 		 INSERT INTO MEMBER_ROLE VALUES(#{num},#{id})
 		 </insert>
 		 
-		 <select id="getLogin" parameterType="MemberVO" resultMap="myLogin">
+		 <select id="getIdCheck" parameterType="MemberVO" resultType="Integer">
+		 SELECT COUNT(*) FROM MEMBER WHERE ID =#{id}
+		 </select>
+		 
+		 <select id="getLogin" parameterType="String" resultMap="myLogin">
 		 SELECT M.*,R.ROLENAME
 		 FROM MEMBER M
 		 LEFT JOIN

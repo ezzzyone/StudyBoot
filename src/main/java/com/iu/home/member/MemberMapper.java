@@ -10,5 +10,7 @@ public interface MemberMapper {
 	public int setRole(MemberVO memberVO)throws Exception;
 	
 	public MemberVO getLogin(MemberVO memberVO)throws Exception;
+	
+	public int getIdCheck(String id)throws Exception;
 
 }
