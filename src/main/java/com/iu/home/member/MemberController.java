@@ -11,7 +11,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import lombok.extern.slf4j.Slf4j;
+
 @Controller
+@Slf4j
 @RequestMapping("/member/*")
 public class MemberController {
 	
@@ -98,8 +101,23 @@ public class MemberController {
 	@ResponseBody
 	public int idCheck(String id)throws Exception{
 		int result = memberMapper.getIdCheck(id);
+//		공통 ajax 에러 xhr 처리 콘솔 확인 	
+//		if(result==0) {
+//			throw 
+//		}
 		return result;
 	}
+	
+	@PostMapping("test")
+	@ResponseBody
+	public int test(String[] ar, String id)throws Exception{
+		log.info("========ar: "+ar[1]);
+		int result = memberMapper.getIdCheck(id);
+		return result;
+	}
+	
+	
+
 	
 	
 	

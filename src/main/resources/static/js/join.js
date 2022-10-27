@@ -42,28 +42,41 @@ $("#id").change(function(){
     // }
     let result = nullCheck($("#id").val(), $("#h1"), "id");
      if(result){
-          //=========== id 중복체크 ajax ============ 
-    const xhttp = new XMLHttpRequest();
-    xhttp.open("GET", "./idCheck?id="+$("#id").val());
-    xhttp.send();
-    xhttp.onreadystatechange = function(){
-        if(this.readyState == 4 && this.status == 200){
-            result = xhttp.responseText.trim();
-            result = JSON.parse(result);
 
-    if(result == 1){
+        // //post
+        // $.post("idCheck",{
+        //     id:id//파라미터:키
+        // }), function(result){
+        //     //result = JSON.parse(result); //json 타입 변환 필요할 때. 문자 잘 안올 때 해보기
+        //     console.log(result);
+        //     console.log(result.id);
+        // }
 
-        $("#h1").text("사용중인 아이디입니다.");
-        results[0] = false;
-    }else{
-        $("#h1").text("사용가능한 아이디입니다.");
+        //get
+        $.get("./idCheck?id="+$("#id").val(), function(data){
+            console.log(data);
+        if(data=='0'){
+            $("#h1").text("사용가능한 아이디입니다.");
+            $("#h1").text("사용중인 아이디입니다.");
+            results[0] = false;
+        }else{
+            $("#h1").text("사용중인 아이디입니다.");
+            results[0] = false;
         }
-         }
-        }   
-    }
+        });
+             }
+        results[0]=result;
+    })
+    
 
-    results[0]=result;
-})
+          //=========== id 중복체크 ajax ============ 
+    // const xhttp = new XMLHttpRequest();
+    // xhttp.open("GET", "./idCheck?id="+$("#id").val());
+    // xhttp.send();
+    // xhttp.onreadystatechange = function(){
+    //     if(this.readyState == 4 && this.status == 200){
+    //         result = xhttp.responseText.trim();
+    //         result = JSON.parse(result);
 
 $("#pw").change(function(){
     let result = nullCheck($("#pw").val(), $("#h2"), "pw");
@@ -149,3 +162,42 @@ $("#joinbtn").click(function(){
     //     return;
     // }
 });
+
+$("#test").click(function(){
+
+    //ajax 통합
+
+    let id ="abcd"; //id값 인풋 대신 설정해줌
+    let ar = [1, 2, 3];
+    $.ajax({
+        type:"post",
+        url :"test",
+        traditional:true,
+        data:{
+            id:id,
+            ar:ar
+        },
+        success : function(data){
+            console.log(data);
+        },
+        error   : function(xhr,status,error){
+            console.log(xhr);
+            console.log(status);
+            console.log(error);
+        }
+    })
+
+})
+
+let count=1;
+$("#s1Add").click(function(){
+    let add = '<option class="abc" id="abc'+count+'">'+count+'</opsion>';
+    $("#s1").append(add);
+    count++
+});
+
+$("#s1Del").click(function(){
+    $("#s1").empty();
+   // $(this).remove();
+});
+

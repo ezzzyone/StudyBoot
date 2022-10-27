@@ -16,6 +16,7 @@
 <div>
     ID<input type="text" name="id" id="id"/>
     <h5 id="h1" class="warning"></h5>
+    <button id="test" type="button">ajax test</button>
 </div>
 <div>
 PW<input type="text" name="pw" id="pw"/>
@@ -64,6 +65,15 @@ EMAIL<input type="text" name="email" id="email"/>
             약관3
         </div>
     </div>
+
+    <div>
+        <select id="s1">
+           <option>1</option>
+           <option>2</option>
+        </select>
+        <button type="button" id="s1Add">Add</button>
+        <button type="button" id="s1Del">Del</button>
+     </div>
 
 </div>
 </body>
