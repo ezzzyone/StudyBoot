@@ -13,39 +13,31 @@
 <link href="/css/test.css" rel="stylesheet">
 </head>
 <body>
-
-<form:form method="post" modelAttribute="memberVO" id="joinfrm">
+<form action="join" method="post" id="joinfrm">
 <div>
-    ID<form:input path="id" id="id" cssClass=""/>
-   
-    <h5 id="h1" class="warning">
-        <form:errors path="id"></form:errors> <!--백엔드메세지-->
-    </h5> <!--js메세지-->
+    ID<input type="text" name="id" id="id"/>
+    <h5 id="h1" class="warning"></h5>
 </div>
 <div>
-PW<form:password path="pw" id="pw"/>
- <form:errors path="pw"></form:errors>
+PW<input type="text" name="pw" id="pw"/>
 <h5 id="h2" class="warning"></h5>
 </div>
 <div>
-    PW2<form:password path="pw2" id="pw2"/>
-     <form:errors path="pw2"></form:errors>
+    PW2<input type="text" id="pw2"/>
     <h5 id="h5" class="warning"></h5>
 </div>
 <div>
-NAME<form:input path="name" id="name"/>
-  <form:errors path="name"></form:errors>
+NAME<input type="text" name="name" id="name"/>
 <h5 id="h3" class="warning"></h5>
 </div>
 <div>
-EMAIL<form:input path="email" id="email"/>
- <form:errors path="email"></form:errors>
+EMAIL<input type="text" name="email" id="email"/>
 <h5 id="h4" class="warning"></h5>
 </div>
 <div>
-<button type="submit" id="joinbtn">join</button>
+<button type="button" id="joinbtn">join</button>
 </div>
- </form:form>
+</form>
 
 <!-- 약관 test-->
 <div>

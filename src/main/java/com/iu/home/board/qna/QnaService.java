@@ -67,4 +67,35 @@ public class QnaService {
 		      return result;
 		  
 	}
+	
+	
+	
+	public int setListUpdate(QnaVO qnaVO)throws Exception{
+		
+		int result = qnaMapper.setListUpdate(qnaVO);
+		
+		
+		File file = new File(path);
+		if(!file.exists()){
+			boolean check = file.mkdirs();
+			log.info("check : {}"+check);
+		}
+		
+
+		for(MultipartFile mf : qnaVO.getFiles()) {
+	
+		         if(!mf.isEmpty()) {
+		            log.info("FileName : {} ", mf.getOriginalFilename());
+		            String fileName = fileManager.saveFile(mf, path);
+		            QnaFileVO qnaFileVO = new QnaFileVO();
+		            qnaFileVO.setFileName(fileName);
+		            qnaFileVO.setOriName(mf.getOriginalFilename());
+		            qnaFileVO.setNum(qnaVO.getNum());
+		            qnaMapper.setFileUpdate(qnaFileVO);
+		         }
+		      
+		}
+		      return result;
+	}
+	
 }

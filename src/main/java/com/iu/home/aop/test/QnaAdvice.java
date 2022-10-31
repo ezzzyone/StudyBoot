@@ -35,7 +35,7 @@ public class QnaAdvice {
 		//point-cut으로 전달되는 매개변수의 인자값
 		log.info("Args : {}", joinPoint.getArgs());
 		Object [] objs = joinPoint.getArgs();
-		QnaVO qnaVO = (QnaVO)objs[0]; //다형성
+		//QnaVO qnaVO = (QnaVO)objs[0]; //다형성
 				
 		Object obj = joinPoint.proceed();
 		log.info("------------ after ------------");

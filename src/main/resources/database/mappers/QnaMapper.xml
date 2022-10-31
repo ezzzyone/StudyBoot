@@ -16,6 +16,14 @@
 		 INSERT INTO QNA VALUES(#{num},#{writer},#{title},#{contents},1,now(),1,1,1)
 		 </insert>
 		 
+		  <update id="setListUpdate" parameterType="QnaVO">
+		UPDATE QNA SET TITLE =#{title},CONTENTS =#{contents} where NUM=#{num}
+		 </update>
+		 
+		   <update id="setListFile" parameterType="QnaFileVO">
+		UPDATE QNA SET FILENAME=#{fileName}, ORINAME=#{oriName} where NUM=#{num}
+		 </update>
+		 
 		 <select id="getListCount" resultType="Long" parameterType="Pager">
 		 SELECT COUNT(NUM) from QNA
 		 WHERE CONTENTS LIKE CONCAT('%',#{search},'%')
@@ -29,6 +37,10 @@
 		 <select id="getFile" parameterType="QnaFileVO" resultType="QnaFileVO">
 		 SELECT * FROM QNAFILE WHERE FILENUM=#{fileNum}
 		 </select>
+		 
+		 <delete id="setDeleteFile" parameterType="QnaFileVO"> 
+		 DELETE FROM QNAFILE WHERE FILENUM=#{fileNum}
+		 </delete>
 		 
 		  <select id="getDetail" parameterType="QnaVO" resultMap="detail">
 		  SELECT Q.*,QF.*
@@ -48,12 +60,13 @@
       <result column="REF" property="ref"/>
       <result column="STEP" property="step"/>
       <result column="DEPTH" property="depth"/>
+      
+      <collection property="qnaFileVOs" javaType="List" ofType="QnaFileVO">
+				<result column="FILENUM" property="fileNum"/>
+      			<result column="FILENAME" property="fileName"/>
+      			<result column="ORINAME" property="oriName"/>
+	 </collection>
                               
-      <association property="qnaFileVO" javaType="QnaFileVO">
-      <result column="FILENUM" property="fileNum"/>
-      <result column="FILENAME" property="fileName"/>
-      <result column="ORINAME" property="oriName"/>
-      </association>
       </resultMap>
 		
 		

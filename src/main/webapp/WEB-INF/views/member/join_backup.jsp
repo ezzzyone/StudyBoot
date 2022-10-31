@@ -16,11 +16,9 @@
 
 <form:form method="post" modelAttribute="memberVO" id="joinfrm">
 <div>
-    ID<form:input path="id" id="id" cssClass=""/>
-   
-    <h5 id="h1" class="warning">
-        <form:errors path="id"></form:errors> <!--백엔드메세지-->
-    </h5> <!--js메세지-->
+    ID<form:input type="text" path="id" id="id" cssClass=""/>
+    <form:errors path="id"></form:errors>
+    <h5 id="h1" class="warning"></h5>
 </div>
 <div>
 PW<form:password path="pw" id="pw"/>
@@ -38,12 +36,11 @@ NAME<form:input path="name" id="name"/>
 <h5 id="h3" class="warning"></h5>
 </div>
 <div>
-EMAIL<form:input path="email" id="email"/>
- <form:errors path="email"></form:errors>
+EMAIL<input type="text" name="email" id="email"/>
 <h5 id="h4" class="warning"></h5>
 </div>
 <div>
-<button type="submit" id="joinbtn">join</button>
+<button type="button" id="joinbtn">join</button>
 </div>
  </form:form>
 
