@@ -10,7 +10,7 @@
 	</parent>
 	<groupId>com.iu</groupId>
 	<artifactId>StudyBoot</artifactId>
-	<version>0.0.2-SNAPSHOT</version>
+	<version>0.0.3-SNAPSHOT</version>
 	<packaging>war</packaging>
 	<name>StudyBoot</name>
 	<description>Demo project for Spring Boot</description>
@@ -57,17 +57,18 @@
 		     <!-- 버전 삭제 -->
 		</dependency>
 
-	
-<!--
-		<dependency>
+
+		<!-- social login-->
+	<!--	<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-oauth2-client</artifactId>
-		</dependency>
+		</dependency> -->
+		
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-security</artifactId>
 		</dependency>
--->
+
 		<dependency>
 			<groupId>org.mybatis.spring.boot</groupId>
 			<artifactId>mybatis-spring-boot-starter</artifactId>

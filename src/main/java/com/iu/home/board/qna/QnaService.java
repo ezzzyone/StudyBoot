@@ -8,8 +8,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.iu.home.member.MemberVO;
 import com.iu.home.util.FileManager;
 import com.iu.home.util.QnaFileVO;
 
@@ -98,4 +100,8 @@ public class QnaService {
 		      return result;
 	}
 	
+	 
+
 }
+	
+

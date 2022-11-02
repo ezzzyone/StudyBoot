@@ -20,6 +20,7 @@
 </head>
 <body>
 <div>
+<h1>js검증 해야함....</h1>
 <form:form method="post" enctype="multipart/form-data" modelAttribute="qnaVO">
       <div class="mb-3">
          <label for="formGroupExampleInput" cssClass="form-label">작성자</label>
@@ -38,6 +39,13 @@
         <form:textarea cssClass="form-control" path="contents" id="contents" rows="5" placeholder="내용을 입력하세요."></form:textarea>
          <form:errors path="contents"></form:errors>
       </div>
+      
+<c:forEach items="${vo.qnaFileVOs}" var="my">
+<div class="mb-3" id="fileDiv" data-file-size="${vo.qnaFileVOs.size()}">
+<img src="/file/qna/${my.fileName}">
+<button type="button" class="delFile" value="${my.fileNum}">X</button>
+</div>
+</c:forEach>
       
       <div cssClass="mb-3" id="fileDiv">
         <form:button id="fileAdd">FileAdd</form:button>

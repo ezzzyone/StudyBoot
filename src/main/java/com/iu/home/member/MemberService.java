@@ -42,8 +42,8 @@ public class MemberService {
 	      if(result>0) {
 	    	  check=true;
 	    	  bindingResult.rejectValue("id","member.id.equal");
-	      }
-	      
+	      } 
+	     
 	      
 	      return check;
 	   }

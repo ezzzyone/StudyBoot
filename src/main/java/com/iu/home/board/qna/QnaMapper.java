@@ -29,6 +29,4 @@ public interface QnaMapper {
 	
 	public int setDeleteFile(QnaFileVO qnaFileVO)throws Exception;
 	
-
-
 }

@@ -30,6 +30,8 @@ public class MemberController {
 	@Autowired
 	private MemberService memberService;
 	
+	
+	
 	@GetMapping("join")
 	public void setJoin(@ModelAttribute MemberVO memberVO){
 		
@@ -96,28 +98,29 @@ public class MemberController {
 		
 	}
 	
-	
-	@PostMapping("login")
-	public ModelAndView getlogin(MemberVO memberVO, HttpSession session)throws Exception{
-		ModelAndView mv = new ModelAndView();
-		memberVO = memberMapper.getLogin(memberVO);
-		
-		if (memberVO!=null) {
-			session.setAttribute("member", memberVO);
-			mv.addObject("msg", "로그인 성공");
-			mv.addObject("url","../");
-		}else {
-			mv.addObject("msg", "로그인 실패");
-			mv.addObject("url", "/member/login");
-	
-		}
-		
-		
-		mv.setViewName("/alert");
-		return mv;
 
-		
-	}
+	//스프링 시큐리티에서 처리
+//	@PostMapping("login")
+//	public ModelAndView getlogin(MemberVO memberVO, HttpSession session)throws Exception{
+//		ModelAndView mv = new ModelAndView();
+//		memberVO = memberMapper.getLogin(memberVO);
+//		
+//		if (memberVO!=null) {
+//			session.setAttribute("member", memberVO);
+//			mv.addObject("msg", "로그인 성공");
+//			mv.addObject("url","../");
+//		}else {
+//			mv.addObject("msg", "로그인 실패");
+//			mv.addObject("url", "/member/login");
+//	
+//		}
+//		
+//		
+//		mv.setViewName("/alert");
+//		return mv;
+//
+//		
+//	}
 	
 	@GetMapping("logout")
 	public ModelAndView logout(HttpSession session){
