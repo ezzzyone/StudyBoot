@@ -32,7 +32,7 @@ public class MemberVO implements UserDetails{
 		for(RoleVO roleVO : roleVOs) {
 		authorities.add(new SimpleGrantedAuthority(roleVO.getRoleName()));
 		}
-		return null;
+		return authorities;
 	}
 	@Override
 	public String getPassword() {
@@ -57,13 +57,13 @@ public class MemberVO implements UserDetails{
 	}
 	@Override
 	public boolean isCredentialsNonExpired() {
-		// 비밀번호 만료 여부 
-		return false;
+		// 비밀번호 (Credential)만료 여부 
+		return true;
 	}
 	@Override
 	public boolean isEnabled() {
 		// 계정 사용 여부 . true = 계정 활성화. 사용 가능 
-		return false;
+		return true;
 	}
 	@Size(max =10, min =4)
 	private String pw;

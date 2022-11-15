@@ -1,12 +1,17 @@
 package com.iu.home;
 
+import java.util.Enumeration;
 import java.util.List;
+
+import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.autoconfigure.AutoConfigureBefore;
+import org.springframework.security.core.context.SecurityContext;
+import org.springframework.security.core.context.SecurityContextImpl;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -14,6 +19,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.iu.home.board.qna.QnaMapper;
 import com.iu.home.board.qna.QnaVO;
+import com.iu.home.member.MemberVO;
 import com.iu.home.util.Pager;
 
 import lombok.extern.slf4j.Slf4j;
@@ -54,9 +60,24 @@ public class HomeComtroller {
 	}
 	
 	@GetMapping("/")
-	public String home()throws Exception{
+	public String home(HttpSession session)throws Exception{
 		
 		log.info(app);
+		Enumeration<String> en =  session.getAttributeNames();
+		log.info("=================this is home=======================");
+		while(en.hasMoreElements()) {
+			String key = en.nextElement();
+			log.info("Key => {}", key);
+			
+		}
+		
+		
+		SecurityContextImpl context = (SecurityContextImpl)session.getAttribute("SPRING_SECURITY_CONTEXT");
+		if(context != null) {
+			log.info("Context => {}",context);
+		//log.info("Context => {}", ((MemberVO)context.getAuthentication().getPrincipal()).getId());
+		//정확히 말하면 MemberVO 아니고 UserDeatail 타입 
+		}
 		//System.out.println(message);
 //		log.error("Error message");
 //		log.warn("warn message");
@@ -69,6 +90,7 @@ public class HomeComtroller {
 		
 		return "index";
 	}
+	
 	
 	
 }

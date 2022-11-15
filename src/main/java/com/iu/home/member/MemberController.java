@@ -30,8 +30,6 @@ public class MemberController {
 	@Autowired
 	private MemberService memberService;
 	
-	
-	
 	@GetMapping("join")
 	public void setJoin(@ModelAttribute MemberVO memberVO){
 		
@@ -67,25 +65,22 @@ public class MemberController {
 		    	 
 		     }
 	         return mv;
+	      } else {
+	  		
+	  		int result = memberMapper.setMember(memberVO);
+	  		memberVO.setNum(1);
+	  		result = memberMapper.setRole(memberVO);
+			if (result>0) {
+				mv.addObject("msg", "조인 성공");
+				mv.addObject("url","/");
+			
+			}else {
+				mv.addObject("msg", "조인 실패");
+				mv.addObject("url", "member/join");
+				throw new Exception();
+			}
+			mv.setViewName("/alert");
 	      }
-//		
-//		int result = memberMapper.setMember(memberVO);
-//		memberVO.setNum(1);
-//		result = memberMapper.setRole(memberVO);
-//		
-//		
-//		if (result>0) {
-//			mv.addObject("msg", "조인 성공");
-//			mv.addObject("url","/");
-//		
-//		}else {
-//			mv.addObject("msg", "조인 실패");
-//			mv.addObject("url", "member/join");
-//			throw new Exception();
-//		}
-//		mv.setViewName("/alert");
-	      
-			mv.setViewName("redirect:../");
 			
 			return mv;
 		
@@ -97,7 +92,11 @@ public class MemberController {
 		return"member/login";
 		
 	}
-	
+	@PostMapping("login")
+	public String login()throws Exception{
+		log.info("===========LOGIN POST============");
+		return "member/login";
+	}
 
 	//스프링 시큐리티에서 처리
 //	@PostMapping("login")
@@ -122,19 +121,19 @@ public class MemberController {
 //		
 //	}
 	
-	@GetMapping("logout")
-	public ModelAndView logout(HttpSession session){
-		
-		ModelAndView mv = new ModelAndView();
-		
-		session.invalidate();
-		mv.addObject("msg","로그아웃 성공");
-		mv.addObject("url","/");
-		mv.setViewName("/alert");
-		
-		return mv; 
-		
-	}
+//	@GetMapping("logout")
+//	public ModelAndView logout(HttpSession session){
+//		
+//		ModelAndView mv = new ModelAndView();
+//		
+//		session.invalidate();
+//		mv.addObject("msg","로그아웃 성공");
+//		mv.addObject("url","/");
+//		mv.setViewName("/alert");
+//		
+//		return mv; 
+//		
+//	}
 
 	@GetMapping("idCheck")
 	@ResponseBody
@@ -143,7 +142,10 @@ public class MemberController {
 		return result;
 	}
 	
-	
+	@GetMapping("mypage")
+	public void mypage() {
+		
+	}
 	
 	
 	
